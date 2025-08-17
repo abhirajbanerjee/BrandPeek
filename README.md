@@ -1,104 +1,125 @@
 # BrandPeek
 
-A React Native Expo application that displays a curated list of top brands with detailed brand information. The app features a modern, gradient-based UI design with smooth navigation between a home screen showing brand cards and detailed brand views.
+BrandPeek is a full-stack assignment project showcasing **React Native (Expo) frontend** and a **Node.js + Express + MySQL backend**.  
+It demonstrates modern UI design, smooth navigation, and secure authentication with JWT.
+
+---
+
+## Live Demo
+
+- **Frontend (Expo Go):** Run locally using `npx expo start`
+
+> Note: The Expo Go link will only work while the project is running locally. Please follow setup instructions below to run it.
+
+---
 
 ## Features
 
-- **Modern UI Design**: Beautiful radial and linear gradient backgrounds
-- **Brand Discovery**: Browse top brands in an attractive card-based interface
-- **Detailed Brand Views**: Tap any brand to see comprehensive information
-- **Smooth Navigation**: Seamless transitions between screens
-- **API Integration**: Dynamic brand data fetching from MockAPI backend
+### Frontend
+- **Modern UI Design**: Gradient backgrounds with clean, card-based brand listing  
+- **Brand Discovery**: Browse top brands dynamically  
+- **Detailed Brand Views**: Tap to view extended brand info  
+- **Smooth Navigation**: Powered by React Navigation  
 
-## Setup Instructions
+### Backend
+- **User Authentication** with JWT  
+- **Device Tracking** (restricts one active session per user)  
+- **RESTful API** with CRUD operations  
+- **MySQL Integration** using `mysql2`  
 
-### Prerequisites
-
-- Node.js (version 14 or higher)
-- npm or yarn package manager
-- Expo CLI (install globally with `npm install -g @expo/cli`)
-- Expo Go app on your mobile device (for testing)
-
-### Installation
-
-1. Clone or download the project
-2. Navigate to the BrandPeek directory:
-   ```bash
-   cd BrandPeek
-   ```
-
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-4. Start the development server:
-   ```bash
-   expo start
-   ```
-
-5. Use the Expo Go app to scan the QR code and run the app on your device, or use an iOS/Android simulator.
-
-## MockAPI Backend Setup
-
-This application is designed to work with a MockAPI backend for brand data. To set up your backend:
-
-1. **Create a MockAPI Account**: Visit [mockapi.io](https://mockapi.io) and create a free account
-
-2. **Create a New Project**: Set up a new project for BrandPeek
-
-3. **Create Brand Resource**: Create a resource called "brands" with the following schema:
-   ```json
-   {
-     "id": "string",
-     "name": "string", 
-     "logo": "string",
-     "tagline": "string",
-     "description": "string"
-   }
-   ```
-
-4. **Update API Configuration**: In `services/api.js`, replace `YOUR_MOCKAPI_BASE_URL` with your actual MockAPI base URL:
-   ```javascript
-   const BASE_URL = 'https://your-project-id.mockapi.io/api/v1';
-   ```
-
-5. **Add Sample Data**: Create some sample brand entries in your MockAPI dashboard with:
-   - Brand names (e.g., "Apple", "Nike", "Coca-Cola")
-   - Logo URLs (use placeholder images or real brand logos)
-   - Catchy taglines
-   - Detailed descriptions
-
-### API Endpoints Used
-
-- `GET /brands` - Fetches all brands for the home screen
-- `GET /brands/:id` - Fetches detailed information for a specific brand
+---
 
 ## Project Structure
+
+
 
 The BrandPeek app follows a modular architecture with clear separation of concerns:
 
 ```
 BrandPeek/
-├── App.js                    # Root component with NavigationContainer
-├── package.json              # Dependencies and project configuration
-├── README.md                 # This documentation file
-├── components/               # Reusable UI components
-│   └── BrandCard.js         # Brand display card component
-├── screens/                  # Screen components
-│   ├── HomeScreen.js        # Main brand listing with radial gradient
-│   └── BrandDetailScreen.js # Individual brand details with linear gradient
-├── navigation/               # Navigation configuration
-│   └── AppNavigator.js      # React Navigation stack setup
-├── services/                 # API and external services
-│   └── api.js               # Brand data fetching functions
-├── constants/                # App-wide constants and configurations
-│   └── styles.js            # Centralized styling definitions
-├── assets/                   # Static assets (images, fonts, etc.)
-├── utils/                    # Utility functions and helpers
-└── .expo/                    # Expo configuration (auto-generated)
+│
+├── backend/ # Node.js + Express backend
+│ ├── routes/ # API route handlers
+│ ├── controllers/ # Business logic for endpoints
+│ ├── models/ # Database models (if used)
+│ ├── middleware/ # Auth & logging middleware
+│ ├── views/ # Response formatting
+│ ├── app.js # Backend entry point
+│ └── package.json # Backend dependencies
+│
+├── frontend/ # React Native (Expo) frontend
+│ ├── components/ # Reusable UI components
+│ │ └── BrandCard.js
+│ ├── screens/ # App screens
+│ │ ├── HomeScreen.js
+│ │ └── BrandDetailScreen.js
+│ ├── navigation/ # App navigation setup
+│ │ └── AppNavigator.js
+│ ├── services/ # API interaction layer
+│ │ └── api.js
+│ ├── constants/ # Styles & config
+│ │ └── styles.js
+│ ├── assets/ # Static assets (images, fonts, etc.)
+│ ├── utils/ # Helper functions
+│ ├── App.js # Frontend entry point
+│ └── package.json # Frontend dependencies
+│
+└── README.md                    # Expo configuration (auto-generated)
 ```
+---
 
+## Backend
+
+### Tech Stack
+- Node.js
+- Express
+- MySQL (`mysql2`)
+- JWT for authentication
+
+### API Endpoints
+
+#### Authentication
+- `POST /login` → User login with device info (JWT issued)  
+- `POST /register` → Create new user  
+- `POST /logout` → Logout and invalidate JWT  
+
+#### Users
+- `GET /users` → Fetch all users  
+- `GET /users/:id` → Fetch single user  
+- `PUT /users/:id` → Update user  
+- `DELETE /users/:id` → Delete user  
+
+#### Devices
+- `POST /device` → Save / update device info  
+
+---
+
+## Frontend
+
+### Tech Stack
+- React Native (Expo)
+- React Navigation
+- React Native SVG (gradients)
+- React Native Gesture Handler & Screens
+
+### API Endpoints Used (MockAPI Demo)
+- `GET /brands` → Fetches all brands for home screen  
+- `GET /brands/:id` → Fetches brand details  
+
+---
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js (v14+)  
+- npm or yarn  
+- Expo CLI (`npm install -g @expo/cli`)  
+- Expo Go app on mobile  
+
+---
+
+
+   
 ### Folder Purposes
 
 - **`components/`**: Reusable UI components that can be used across multiple screens
