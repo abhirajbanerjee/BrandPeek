@@ -1,0 +1,37 @@
+{
+  "name": "brandpeek",
+  "version": "1.0.0",
+  "description": "A React Native Expo app for discovering and exploring top brands with modern gradient UI design",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "brands",
+    "mobile-app",
+    "gradient-ui"
+  ],
+  "author": "BrandPeek Team",
+  "dependencies": {
+    "@expo/vector-icons": "^14.0.0",
+    "@react-navigation/native": "^7.1.17",
+    "@react-navigation/native-stack": "^7.3.25",
+    "expo": "~53.0.20",
+    "expo-status-bar": "~2.2.3",
+    "react": "19.0.0",
+    "react-native": "0.79.5",
+    "react-native-gesture-handler": "^2.28.0",
+    "react-native-screens": "^4.14.1",
+    "react-native-svg": "^15.12.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  },
+  "private": true
+}
